@@ -1,0 +1,7 @@
+{
+  "greeting": " Bonjour Le Monde!!",
+  "description": {
+    "line1": "vous apprenez la bibliothèque d internationalisation i18next",
+    "line2": "Merci"
+  }
+}

@@ -1,0 +1,76 @@
+ 1 ) making the simple greeting app using i18Next library which is used for translating the content into different languages
+
+ 2 ) setup:-
+     --> install :-  npm install react-i18next i18next --save = i18next is a very popular internationalization framework for browser
+
+     --> install :- npm i i18next-browser-languagedetector = this is used to detect the language in the user browser with the support of ex:- cookies, session, localstorage etc,...
+
+3 ) file setup to work with i18Next:-
+     --> make a file i18n.js in src
+
+     --> configure i18Next:-
+          1) import i18n from 'i18next';
+          2) import { initReactI18next } from 'react-i18next';
+          3) import LanguageDetector from 'i18next-browser-languagedetector';
+
+          i18n
+          .use(LanguageDetector)     // detect the language
+          .use(initReactI18next)         // pass the i18n instance to react-i18next 
+          .init({   //initiazie it which is an object which have to give the properties we want to
+
+
+             debug: true        // give us error
+             lng: 'en'          //default language
+
+             resources: {       // inside this object we want keep all the translation we want
+             en:{ // english
+
+                translation: {
+                    greeting: "Hello World",
+                } // in translation object we have the greeting which will be in different language so defining its meaning
+             }, 
+
+             fr: {  // French
+             translation:{
+                greeting: "Bonjour le monde"
+             } // defining the hello world in french 
+
+             },  
+
+             hi: {
+                translation: {
+                    greeting: "नमस्ते दुनिया"
+                }
+             }    // hindi
+
+             }
+          }) 
+          // we have to provide the same key we are giving to translate the content in different languages:- (greeting) have some content but in all different language
+
+4 ) import it inside the main file (index.js or main.js);
+
+5 ) work with the file we wanna use (app.js) i have this file only for now
+     --> use the hook (useTranslation() from react-i18Next);
+         it use the {t} = translation or translate
+         ex:- const {t} = useTranslation();
+
+         --> now use that t :- {t("provide the key (greeting)")}
+
+         --> it will help us to show the content language we define like agar (en) => hello world
+                                                                        (fr) => Bonjour le monde
+                                                                        (hi)=>"नमस्ते दुनिया    
+
+                BY DEFAULT WE HAVE (EN) english SETUP US SO I WILL SAY "HELLO WORLD"
+                BUT AGAR i18n.js FILE MAI AGAR HUM MAIN LANGUAGE KO (FR) French KAREGE TOH CONTENT WILL DISPLAY IN French WHEN PAGE GET LOAD                                                              
+
+6 ) if the data is coming from the backend:-
+   --> install the package = npm i i18next-http-backend
+
+   --> create a folder locale 
+      inside this folder have separate file all the translation file we want
+       --> en.json
+       --> hi.json
+       --> fr.json
+
+   --> after the package got install add the middleware in i18n.js file
+      import backend from  'i18next-http-backend' 

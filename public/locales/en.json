@@ -1,0 +1,7 @@
+{
+  "greeting": "Hello World!!",
+  "description": {
+    "line1": "you are learning i18next internationalization library",
+    "line2": "Thank you"
+  }
+}
